@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', "~> 5.1"
   s.add_dependency 'rails-i18n', '~> 5.0'
 
-  # s.add_dependency 'biovision-base'
+  s.add_dependency 'biovision-base'
   s.add_dependency 'carrierwave', '~> 1.2'
   s.add_dependency 'carrierwave-bombshelter', '~> 0.2'
   s.add_dependency 'kaminari', '~> 1.1'
@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'factory_bot_rails'
-  s.add_development_dependency 'pg'
+  s.add_development_dependency 'pg', '~> 0.18'
   s.add_development_dependency 'rspec-rails'
 end
