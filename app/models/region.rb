@@ -9,7 +9,7 @@ class Region < ApplicationRecord
 
   toggleable :visible
 
-  belongs_ro :country, optional: true, counter_cache: true
+  belongs_to :country, optional: true, counter_cache: true
   belongs_to :parent, class_name: Region.to_s, optional: true, touch: true
   has_many :child_regions, class_name: Region.to_s, foreign_key: :parent_id
   has_many :users, dependent: :nullify
