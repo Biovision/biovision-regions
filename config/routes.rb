@@ -1,4 +1,4 @@
-Biovision::Regions::Engine.routes.draw do
+Rails.application.routes.draw do
 
   namespace :admin do
     resources :regions, only: [:index, :show] do

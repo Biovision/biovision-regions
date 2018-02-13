@@ -6,8 +6,12 @@ class RegionsController < AdminController
   def create
     @entity = Region.new(creation_parameters)
     if @entity.save
-      cache_relatives
-      redirect_to admin_region_path(@entity)
+      next_page = admin_region_path(@entity.id)
+      respond_to do |format|
+        format.html { redirect_to next_page }
+        format.json { render json: { links: { self: next_page } } }
+        format.js { render js: "document.location.href = '#{next_page}'" }
+      end
     else
       render :new, status: :bad_request
     end
@@ -20,8 +24,12 @@ class RegionsController < AdminController
   # patch /regions/:id
   def update
     if @entity.update(entity_parameters)
-      cache_relatives
-      redirect_to admin_region_path(@entity), notice: t('regions.update.success')
+      next_page = admin_region_path(@entity.id)
+      respond_to do |format|
+        format.html { redirect_to next_page, notice: t('regions.update.success') }
+        format.json { render json: { links: { self: next_page } } }
+        format.js { render js: "document.location.href = '#{next_page}'" }
+      end
     else
       render :edit, status: :bad_request
     end
@@ -60,14 +68,5 @@ class RegionsController < AdminController
 
   def creation_parameters
     params.require(:region).permit(Region.creation_parameters)
-  end
-
-  def cache_relatives
-    @entity.cache_parents!
-    unless @entity.parent.blank?
-      parent = @entity.parent
-      parent.cache_children!
-      parent.save
-    end
   end
 end
