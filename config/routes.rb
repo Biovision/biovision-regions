@@ -13,5 +13,9 @@ Rails.application.routes.draw do
     # get 'privileges/:id/regions' => 'privileges#regions', as: :regions_admin_privilege, defaults: { format: :json }
   end
 
-  resources :regions, except: [:index, :show]
+  resources :regions do
+    member do
+      get 'children', defaults: { format: :json }
+    end
+  end
 end

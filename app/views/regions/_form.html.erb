@@ -1,4 +1,4 @@
-<%= form_with(model: entity, html: { id: 'region-form' }) do |f| %>
+<%= form_with(model: entity, html: { id: "#{entity.class.to_s.underscore}-form" }) do |f| %>
   <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
 
   <dl>
@@ -15,9 +15,9 @@
           <%=
             f.file_field(
                 :image,
-                id: :region_image,
+                id:     :region_image,
                 accept: 'image/jpeg,image/png',
-                data: { image: 'region-image' }
+                data:   { image: 'region-image' }
             )
           %>
         </figcaption>
@@ -36,9 +36,9 @@
           <%=
             f.file_field(
                 :header_image,
-                id: :region_header_image,
+                id:     :region_header_image,
                 accept: 'image/jpeg,image/png',
-                data: { image: 'region-header-image' }
+                data:   { image: 'region-header-image' }
             )
           %>
           <div class="guideline"><%= t('.guidelines.header_image') %></div>
@@ -51,9 +51,9 @@
       <%=
         f.text_field(
             :name,
-            id: :region_name,
-            required: true,
-            size: nil,
+            id:        :region_name,
+            required:  true,
+            size:      nil,
             maxlength: Region::NAME_LIMIT
         )
       %>
@@ -64,9 +64,9 @@
       <%=
         f.text_field(
             :short_name,
-            id: :region_short_name,
-            required: true,
-            size: nil,
+            id:        :region_short_name,
+            required:  true,
+            size:      nil,
             maxlength: Region::NAME_LIMIT
         )
       %>
@@ -80,10 +80,10 @@
       <%=
         f.text_field(
             :locative,
-            id: :region_locative,
-            required: true,
-            size: nil,
-            maxlength: Region::NAME_LIMIT,
+            id:          :region_locative,
+            required:    true,
+            size:        nil,
+            maxlength:   Region::NAME_LIMIT,
             placeholder: t('.placeholders.locative')
         )
       %>
@@ -97,9 +97,9 @@
       <%=
         f.text_field(
             :slug,
-            id: :region_slug,
-            required: true,
-            size: nil,
+            id:        :region_slug,
+            required:  true,
+            size:      nil,
             maxlength: Region::SLUG_LIMIT
         )
       %>

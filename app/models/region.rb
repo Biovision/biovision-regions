@@ -1,11 +1,12 @@
 class Region < ApplicationRecord
   include Toggleable
 
-  SLUG_PATTERN   = /\A[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?\z/
-  PER_PAGE       = 20
-  NAME_LIMIT     = 70
-  SLUG_LIMIT     = 63
-  PRIORITY_RANGE = (1..32767)
+  SLUG_PATTERN      = /\A[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9])?\z/
+  SLUG_PATTERN_HTML = '^[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?$'
+  PER_PAGE          = 20
+  NAME_LIMIT        = 70
+  SLUG_LIMIT        = 63
+  PRIORITY_RANGE    = (1..32767)
 
   toggleable :visible
 
