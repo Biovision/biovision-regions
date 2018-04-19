@@ -9,7 +9,7 @@
 
   <% unless @entity.parent.nil? %>
       <ul class="actions">
-        <li><%= return_icon(admin_region_path(@entity.parent_id)) %></li>
+        <li><%= return_icon(admin_region_path(id: @entity.parent_id)) %></li>
       </ul>
   <% end %>
 

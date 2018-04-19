@@ -14,7 +14,7 @@ class RegionsController < ApplicationController
   def create
     @entity = Region.new(creation_parameters)
     if @entity.save
-      form_processed_ok(admin_region_path(@entity.id))
+      form_processed_ok(admin_region_path(id: @entity.id))
     else
       form_processed_with_error(:new)
     end
@@ -34,7 +34,7 @@ class RegionsController < ApplicationController
   # patch /regions/:id
   def update
     if @entity.update(entity_parameters)
-      form_processed_ok(admin_region_path(@entity.id))
+      form_processed_ok(admin_region_path(id: @entity.id))
     else
       form_processed_with_error(:edit)
     end
@@ -70,7 +70,7 @@ class RegionsController < ApplicationController
 
   def restrict_editing
     if @entity.locked? || !@entity.editable_by?(current_user)
-      redirect_to admin_region_path(@entity.id), alert: t('regions.edit.forbidden')
+      redirect_to admin_region_path(id: @entity.id), alert: t('regions.edit.forbidden')
     end
   end
 

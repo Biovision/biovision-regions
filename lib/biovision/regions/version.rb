@@ -1,5 +1,5 @@
 module Biovision
   module Regions
-    VERSION = '0.1.180316'
+    VERSION = '0.2.180419'
   end
 end

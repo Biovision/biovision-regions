@@ -1,7 +1,7 @@
 module BiovisionRegionsHelper
   # @param [Region] entity
   def admin_region_link(entity)
-    link_to(entity.name, admin_region_path(entity.id))
+    link_to(entity.name, admin_region_path(id: entity.id))
   end
 
   # @param [Region] entity
